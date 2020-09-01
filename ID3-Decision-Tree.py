@@ -37,11 +37,11 @@ for train_index, test_index in kf.split(X,y):
     
     
 # Training the Decision Tree Classification model on the Training set
-'''
+
 from sklearn.tree import DecisionTreeClassifier
 classifier = DecisionTreeClassifier(random_state = 0)
 classifier.fit(X_train, y_train)
-'''
+
 
 # Building the Decision Tree Model for Gini Index
 
