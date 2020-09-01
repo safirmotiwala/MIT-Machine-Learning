@@ -10,6 +10,7 @@ import numpy as np
 import pandas as pd
 from my_tools import Node, DTLinkedList, mystack
 import random
+import copy
 
 class information_gain:
     def __init__(self, X, y):
@@ -18,6 +19,8 @@ class information_gain:
         self.total_positive, self.total_negative, self.total = 0, 0, 0
         self.Xtrain, self.ytrain = X, y
         self.container = {}
+        self.container1 = {}
+        self.root = Node()
         
     def add_features(self, dataset):
         for i in range(len(dataset.columns)):
@@ -47,6 +50,7 @@ class information_gain:
         unique_vals = np.unique(self.Xtrain[col], axis = 0)
         #print(unique_vals)
         e = []
+        total_votes = []
         avg_info_entropy = 0
         for i in unique_vals:
             #e1 = self.Xtrain[:, col][np.where(self.Xtrain[:, col]==i)]
@@ -57,9 +61,10 @@ class information_gain:
             n = t - p
             entropy = -(p/t)*np.log2(p/t) - (n/t)*np.log2(n/t)
             e.append([i, t, p, n, entropy])
+            total_votes.append(t)
             avg_info_entropy += (t/self.total) * entropy 
         #print(e)
-        return avg_info_entropy
+        return [total_votes, avg_info_entropy]
     
     def get_gain(self, features, fi):
         for fi in fi:
@@ -74,20 +79,57 @@ class information_gain:
                 capture_root = i
         return capture_root
     
+    def build_root(self, root, cont, total_votes):
+        self.root.initial = root
+        self.root.title = self.features[root]
+        self.root.dataset = self.Xtrain[:, int(root[1])]
+        self.root.entropy = cont[root]
+        self.root.gain = self.container1[root]
+        self.root.yes = total_votes[0]
+        self.root.no = total_votes[1]
+        self.root.novote = total_votes[2]
+        return True
+    
+    def subtree(self, node, place):
+        if place=='left':
+            print("Democrat")
+        if place=='right':
+            print("Republican")
+        
+    
     def decision_tree(self):
         feature_initials = [key for key in self.features.keys()]
         #print(feature_initials)
         
         for fi in feature_initials:
-            self.container[fi] = self.get_entropy(fi)
+            t = self.get_entropy(fi)
+            total_votes, self.container[fi] = t[0], t[1]
         print("--------------Features Average Info Entropies-------------------")
         print(self.container)
-        self.container = self.get_gain(self.container, feature_initials)
+        cont = copy.deepcopy(self.container)
+        self.container1 = self.get_gain(self.container, feature_initials)
         print("--------------Features Gain-------------------")
-        print(self.container)
-        root = self.get_root(self.container)
+        print(self.container1)
+        root = self.get_root(self.container1)
         print("Root Node : ", root)
         
+        # Building Root Node
+        root_creation = self.build_root(root, cont, total_votes)
+        
+        # Printing Root Node
+        '''
+        if root_creation:
+            print(self.root.title)
+            print(self.root.dataset)
+            print(self.root.entropy)
+            print(self.root.gain)
+            print(self.root.yes)
+            print(self.root.no)
+            print(self.root.novote)
+        '''
+        
+        # Building Sub Trees
+            
         '''
         types = []
         count = 0

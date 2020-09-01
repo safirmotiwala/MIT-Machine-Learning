@@ -6,6 +6,7 @@ Created on Tue Sep  1 18:12:16 2020
 @author: safir
 
 @status: Entropy and Gain for Root Node Done
+            Sub Tree Next
 """
 
 # Importing the libraries
@@ -30,7 +31,7 @@ y = dataset.iloc[:, 0].values
 # Splitting the dataset into the Training set and Test set
 from sklearn.model_selection import KFold
 kf = KFold(n_splits=5)
-print(kf.get_n_splits(X))
+#print(kf.get_n_splits(X))
 
 for train_index, test_index in kf.split(X,y):
     X_train, X_test = X[train_index], X[test_index]
@@ -44,7 +45,7 @@ classifier = DecisionTreeClassifier(random_state = 0)
 classifier.fit(X_train, y_train)
 '''
 
-
+'''
 # Predicting the Test set results
 y_pred = classifier.predict(X_test)
 
@@ -56,7 +57,7 @@ print("Test Accuracy: {} %".format(np.multiply(classifier.score(X_test,y_test),1
 from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
-
+'''
 
 # Building the Decision Tree Model with Information Gain
 

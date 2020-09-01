@@ -7,8 +7,15 @@ Created on Tue Sep  1 20:38:42 2020
 """
 
 class Node:
-    def __init__(self, dataset):
-        self.dataset = dataset
+    def __init__(self):
+        self.initial = ""
+        self.title = ""
+        self.dataset = []
+        self.entropy = 0
+        self.gain = 0
+        self.yes = 0
+        self.no = 0
+        self.novote = 0
         self.left = None
         self.right = None
 
