@@ -5,7 +5,7 @@ Created on Tue Sep  1 18:12:16 2020
 
 @author: safir
 
-@status: Entropy In-Progress
+@status: Entropy and Gain for Root Node Done
 """
 
 # Importing the libraries
@@ -61,11 +61,11 @@ print(cm)
 # Building the Decision Tree Model with Information Gain
 
 from information_gain import information_gain
-ig = information_gain()
+ig = information_gain(X_train, y_train)
 ig.add_features(dataset)
 print(ig.features)
 
-total_entropy = ig.total_entropy(dataset)
+ig.total_entropy_find(dataset)
 
 ## Making the decision Tree
 ig.decision_tree()
