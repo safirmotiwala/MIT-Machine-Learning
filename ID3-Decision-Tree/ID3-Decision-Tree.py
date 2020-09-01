@@ -5,7 +5,7 @@ Created on Tue Sep  1 18:12:16 2020
 
 @author: safir
 
-@status: Initial Template
+@status: Entropy In-Progress
 """
 
 # Importing the libraries
@@ -13,10 +13,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
 
+
 # Importing the dataset
 dataset = pd.read_csv('house-votes-84.csv')
 party = {'republican':0, 'democrat':1}
-vote = {'y':1, 'n':0, '?':3}
+vote = {'y':0, 'n':1, '?':2}
 
 for col in dataset.columns:
     if col != 'party':
@@ -37,10 +38,11 @@ for train_index, test_index in kf.split(X,y):
     
     
 # Training the Decision Tree Classification model on the Training set
-
+'''
 from sklearn.tree import DecisionTreeClassifier
 classifier = DecisionTreeClassifier(random_state = 0)
 classifier.fit(X_train, y_train)
+'''
 
 
 # Predicting the Test set results
@@ -55,6 +57,7 @@ from sklearn.metrics import confusion_matrix
 cm = confusion_matrix(y_test, y_pred)
 print(cm)
 
+
 # Building the Decision Tree Model with Information Gain
 
 from information_gain import information_gain
@@ -62,4 +65,7 @@ ig = information_gain()
 ig.add_features(dataset)
 print(ig.features)
 
-total_entropy = ig.entropy(X_train)
+total_entropy = ig.total_entropy(dataset)
+
+## Making the decision Tree
+ig.decision_tree()
