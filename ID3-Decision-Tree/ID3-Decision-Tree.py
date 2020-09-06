@@ -5,8 +5,7 @@ Created on Tue Sep  1 18:12:16 2020
 
 @author: safir
 
-@status: Entropy and Gain for Root Node Done
-            Sub Tree Next
+@status: Problem with left subtrees
 """
 
 # Importing the libraries
@@ -17,6 +16,7 @@ import pandas as pd
 
 # Importing the dataset
 dataset = pd.read_csv('house-votes-84.csv')
+rawdataset = pd.read_csv('house-votes-84.csv')
 party = {'republican':0, 'democrat':1}
 vote = {'y':0, 'n':1, '?':2}
 
@@ -66,7 +66,7 @@ ig = information_gain(X_train, y_train)
 ig.add_features(dataset)
 print(ig.features)
 
-ig.total_entropy_find(dataset)
-
 ## Making the decision Tree
 ig.decision_tree()
+td1 = ig.ndx
+td2 = ig.ndy

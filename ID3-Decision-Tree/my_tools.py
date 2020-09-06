@@ -7,7 +7,7 @@ Created on Tue Sep  1 20:38:42 2020
 """
 
 class Node:
-    def __init__(self):
+    def __init__(self, n):
         self.initial = ""
         self.title = ""
         self.dataset = []
@@ -16,8 +16,8 @@ class Node:
         self.yes = 0
         self.no = 0
         self.novote = 0
-        self.left = None
-        self.right = None
+        self.prob1 = 0
+        self.prob2 = 0
 
 class DTLinkedList:
     def __init__(self):
