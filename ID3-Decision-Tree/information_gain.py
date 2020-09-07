@@ -65,7 +65,12 @@ class information_gain:
             t = len(e2)
             p = np.count_nonzero(e2)
             n = t - p
-            entropy = -(p/t)*np.log2(p/t) - (n/t)*np.log2(n/t)
+            try:
+                entropy = -(p/t)*np.log2(p/t) - (n/t)*np.log2(n/t)
+                if (np.isnan(entropy)):
+                        entropy = 0
+            except ZeroDivisionError:
+                entropy = 0
             e.append([i, t, p, n, entropy])
             total_votes.append(t)
             avg_info_entropy += (t/self.total) * entropy 
@@ -73,7 +78,6 @@ class information_gain:
         return [total_votes, avg_info_entropy]
     
     def get_subentropy(self, feature):
-        print("Entropy")
         col = int(feature[1])
         unique_vals = np.unique(self.ndx[col], axis = 0)
         #print(unique_vals)
@@ -87,11 +91,14 @@ class information_gain:
             t = len(e2)
             p = np.count_nonzero(e2)
             n = t - p
-            entropy = -(p/t)*np.log2(p/t) - (n/t)*np.log2(n/t)
+            try:
+                entropy = -(p/t)*np.log2(p/t) - (n/t)*np.log2(n/t)
+                if (np.isnan(entropy)):
+                    entropy = 0
+            except ZeroDivisionError:
+                entropy = 0
             e.append([i, t, p, n, entropy])
             total_votes.append(t)
-            print("Hello")
-            print("TV", total_votes)
             avg_info_entropy += (t/self.total) * entropy 
         #print(e)
         return [total_votes, avg_info_entropy]
@@ -108,7 +115,12 @@ class information_gain:
         return features
     
     def get_root(self, features):
-        root = list(features.values())[0]
+        print("Maximum")
+        print(features)
+        print("Features len : ", len(list(features.values())))
+        if len(list(features.values()))>0:
+            root = list(features.values())[0]
+        capture_root = list(features.keys())[0]
         for i in list(features.keys()):
             if features[i]>root:
                 root = features[i]
@@ -249,7 +261,7 @@ class information_gain:
                 container = {}
                 for fi in feature_initials:
                     if fi not in features_done:
-                        t = self.get_entropy(fi)
+                        t = self.get_subentropy(fi)
                         total_votes[fi], container[fi] = t[0], t[1]
                 print("--------------Features Average Info Entropies-------------------")
                 print(container)
