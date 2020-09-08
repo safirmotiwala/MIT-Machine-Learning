@@ -15,6 +15,7 @@ import copy
 class information_gain:
     def __init__(self, X, y):
         self.features = {}
+        self.features_done = []
         self.total_entropy = 0
         self.total_positive, self.total_negative, self.total = 0, 0, 0
         self.Xtrain, self.ytrain = X, y
@@ -160,9 +161,9 @@ class information_gain:
         new_node.dataset = self.Xtrain[:, int(node_initial[1])]
         new_node.entropy = cont[node_initial]
         new_node.gain = cont1[node_initial]
-        new_node.yes = total_votes[0]
-        new_node.no = total_votes[1]
-        new_node.novote = total_votes[2]
+        #new_node.yes = total_votes[0]
+        #new_node.no = total_votes[1]
+        #new_node.novote = total_votes[2]
         new_node.prob1 = self.ndp
         new_node.prob2 = self.ndn
         # Printing Root Node
@@ -181,14 +182,21 @@ class information_gain:
     
     def build_temporary_dataframe(self, feature, side, nu):
         print(feature)
+        fd = self.features_done
+        fdl = []
         Xt, yt = self.Xtrain, self.ytrain
-        col = int(feature[1])
         take_val = side
-        y1 = np.where(Xt[:,col]==take_val)
-        y2 = yt[y1]
+        y1, y2 = Xt, yt
+        for i in fd:
+            col = int(feature[1])
+            fdl.append(col)
+            c = np.where(y1[:,col]==take_val)
+            y1 = y1[c]
+            y2 = y2[c]
+        print("Y1 : ", y1) 
         #print(y1)
         #print(y2)
-        y1 = Xt[y1]
+        #y1 = Xt[y1]
         #print(y1)
         dataset = y2
         dataset = dataset.reshape(len(dataset), 1)
@@ -222,7 +230,6 @@ class information_gain:
         self.total_entropy_find()
         feature_initials = [key for key in self.features.keys()]
         print(feature_initials)
-        features_done = []
         total_votes = {}
         for fi in feature_initials:
             t = self.get_entropy(fi)
@@ -236,7 +243,7 @@ class information_gain:
         root = self.get_root(self.container1)
         print("Root Node : ", root)
         
-        features_done.append(root)
+        self.features_done.append(root)
         
         # Building Root Node
         root_creation = self.build_root(root, cont, total_votes[root])
@@ -260,13 +267,15 @@ class information_gain:
                 total_votes = {}
                 container = {}
                 for fi in feature_initials:
-                    if fi not in features_done:
+                    if fi not in self.features_done:
                         t = self.get_subentropy(fi)
                         total_votes[fi], container[fi] = t[0], t[1]
+                if len(container)==0:
+                    break
                 print("--------------Features Average Info Entropies-------------------")
                 print(container)
                 cont = copy.deepcopy(container)
-                container1 = self.get_subgain(container, feature_initials, features_done)
+                container1 = self.get_subgain(container, feature_initials, self.features_done)
                 print("--------------Features Gain-------------------")
                 print(container1)
                 new_node = self.get_root(container1)
@@ -276,13 +285,12 @@ class information_gain:
                 track.append(tn)
                 track = track[1]
                 #print(track[0].initial)
-                features_done.append(node_created.initial)
-                print(features_done)
+                self.features_done.append(node_created.initial)
                 nd = self.build_temporary_dataframe(track[0].initial, nodes_sides[0], nu)
             except IndexError:
                 break
         self.traverse_tree()
-        print(features_done)
+        print(self.features_done)
         
         
             
