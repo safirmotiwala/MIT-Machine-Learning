@@ -6,10 +6,24 @@ Created on Wed Sep  9 21:13:58 2020
 @author: safir
 """
 
-fields = ['State', 'Climate', 'Age', 'Body_Shape', 'Immune_Strength', 'Covid_19']
+# Building the DataSet
+
+fields = ['State', 'Climate', 'Age', 'Body_Shape', 'Immune_Strength', 'Mood', 'Migrant', 'Chocolate_Lover', 'Hangout', 'Stressed', 'Depressed', 'Literate', 'Food_preference', 'Friend_Circle', 'Married', 'Sports', 'Party', 'Covid_19']
 state = ['Maharashtra', 'Karnataka']
 Age = ['Young', 'Old']
 Immune_Strength = ['Weak', 'High']
+Mood = ["Happy", 'Sad']
+Migrant = ['Yes', 'No']
+Chocolate_Lover = ['Yes', 'No']
+Hangout = ['Sometimes', 'Often']
+Stressed = ['Sometimes', 'Often']
+Depressed = ['Never', 'Sometimes', 'Often']
+Literate = ['Yes', 'No']
+Food_preference = ['Veg', 'NonVeg']
+Friend_Circle = ['Small', 'Huge']
+Married = ['Yes', 'No']
+Sports = ['Cricket', 'Football']
+Party = ['Sometimes', 'Often']
 Covid_19 = ['Yes', 'No']
 
 import csv
@@ -19,16 +33,16 @@ filename = 'Covid-19_Data.csv'
 with open(filename, 'w') as csvfile:
     csvwriter = csv.writer(csvfile)
     csvwriter.writerow(fields)
-    row = [random.choice(state), 'Sunny', random.choice(Age), 'Under-weight', random.choice(Immune_Strength), 'Yes']
+    row = [random.choice(state), 'Sunny', random.choice(Age), 'Under-weight', random.choice(Immune_Strength), random.choice(Mood), random.choice(Migrant), random.choice(Chocolate_Lover), random.choice(Hangout), random.choice(Stressed), random.choice(Depressed), random.choice(Literate), random.choice(Food_preference), random.choice(Friend_Circle), random.choice(Married), random.choice(Sports), random.choice(Party), 'Yes']
     csvwriter.writerow(row)
     for i in range(2):
-        row = [random.choice(state), 'Sunny', random.choice(Age), 'Under-weight', random.choice(Immune_Strength), 'No']
+        row = [random.choice(state), 'Sunny', random.choice(Age), 'Under-weight', random.choice(Immune_Strength), random.choice(Mood), random.choice(Migrant), random.choice(Chocolate_Lover), random.choice(Hangout), random.choice(Stressed), random.choice(Depressed), random.choice(Literate), random.choice(Food_preference), random.choice(Friend_Circle), random.choice(Married), random.choice(Sports), random.choice(Party), 'No']
     csvwriter.writerow(row)
     for i in range(0, 390):
-        row = [random.choice(state), 'Sunny', random.choice(Age), 'Under-weight', random.choice(Immune_Strength), random.choice(Covid_19)]
+        row = [random.choice(state), 'Sunny', random.choice(Age), 'Under-weight', random.choice(Immune_Strength), random.choice(Mood), random.choice(Migrant), random.choice(Chocolate_Lover), random.choice(Hangout), random.choice(Stressed), random.choice(Depressed), random.choice(Literate), random.choice(Food_preference), random.choice(Friend_Circle), random.choice(Married), random.choice(Sports), random.choice(Party), random.choice(Covid_19)]
         csvwriter.writerow(row)
     for i in range(0,10):
-        row = [random.choice(state), 'Winter', random.choice(Age), 'Over-weight', random.choice(Immune_Strength), random.choice(Covid_19)]
+        row = [random.choice(state), 'Winter', random.choice(Age), 'Over-weight', random.choice(Immune_Strength), random.choice(Mood), random.choice(Migrant), random.choice(Chocolate_Lover), random.choice(Hangout), random.choice(Stressed), random.choice(Depressed), random.choice(Literate), random.choice(Food_preference), random.choice(Friend_Circle), random.choice(Married), random.choice(Sports), random.choice(Party), random.choice(Covid_19)]
         csvwriter.writerow(row)
         
 import numpy as np
