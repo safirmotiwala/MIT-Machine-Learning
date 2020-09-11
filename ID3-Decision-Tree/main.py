@@ -61,7 +61,7 @@ print(cm)
 
 from ID3 import information_gain
 ig = information_gain(X_train, y_train)
-ig.add_features(dataset)
+ig.add_features(dataset, 'party')
 print(ig.features)
 
 ## Making the decision Tree

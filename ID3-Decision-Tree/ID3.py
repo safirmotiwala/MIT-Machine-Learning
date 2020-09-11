@@ -59,9 +59,9 @@ class information_gain:
         self.head = copy.copy(self.root)
         self.train_set1 = []
         
-    def add_features(self, dataset):
+    def add_features(self, dataset, result_col_name):
         for i in range(len(dataset.columns)):
-            if dataset.columns[i]!='party':
+            if dataset.columns[i]!=result_col_name:
                 key_generator = 'f' + str(i)
                 self.features[key_generator] = dataset.columns[i]
         return True
