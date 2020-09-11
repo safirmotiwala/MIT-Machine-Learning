@@ -1,11 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Sep  1 18:12:16 2020
+Created on Tue Sep  1 17:05:39 2020
 
 @author: safir
-
-@status: Problem with left subtrees
 """
 
 # Importing the libraries
@@ -18,7 +16,7 @@ import pandas as pd
 dataset = pd.read_csv('house-votes-84.csv')
 rawdataset = pd.read_csv('house-votes-84.csv')
 party = {'republican':0, 'democrat':1}
-vote = {'y':0, 'n':1, '?':2}
+vote = {'y':1, 'n':0, '?':0}
 
 for col in dataset.columns:
     if col != 'party':
@@ -61,12 +59,24 @@ print(cm)
 
 # Building the Decision Tree Model with Information Gain
 
-from information_gain import information_gain
+from ID3 import information_gain
 ig = information_gain(X_train, y_train)
 ig.add_features(dataset)
 print(ig.features)
 
 ## Making the decision Tree
 ig.decision_tree()
-td1 = ig.ndx
-td2 = ig.ndy
+y_pred = ig.predict(X_test)
+print(y_pred)
+
+y_pred1 = ig.predict(X_train)
+
+from sklearn.metrics import accuracy_score
+
+a = accuracy_score(y_test, y_pred)
+print(a)
+
+
+from sklearn.metrics import confusion_matrix
+cm = confusion_matrix(y_test, y_pred)
+print(cm)
