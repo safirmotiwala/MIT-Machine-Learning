@@ -61,3 +61,14 @@ selection) for building the SVM model and apply this model to classify a new sam
 hyper-parameters (degree, C, and sigma) using k-fold cross-validation technique. Report
 accuracy, F-score and ROC curve for the best model created using Linear, Polynomial, and
 RBF kernels, respectively.
+
+### 5. Bayesian Belief Network
+* File - 2175052_Safir_ML_Lab_Ass5.pynb
+#### Assignment 5
+Write a python program to construct a Bayesian Belief Network considering medical data.
+Use this model to demonstrate the diagnosis of heart patients using the standard Heart
+Disease Data Set. Refer the dataset ‘asia’ (also called LUNG CANCER) which is available in
+R package ‘bnlearn’ (Link:- https://www.bnlearn.com/bnrepository/discrete-small.html#asia).
+Note:- Copy ‘asia’ dataset from the package ‘bnlearn’. Then, develop your code in python to
+construct a Bayesian Belief Network. It’s an individual assignment.
+
