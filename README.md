@@ -72,3 +72,23 @@ R package ‘bnlearn’ (Link:- https://www.bnlearn.com/bnrepository/discrete-sm
 Note:- Copy ‘asia’ dataset from the package ‘bnlearn’. Then, develop your code in python to
 construct a Bayesian Belief Network. It’s an individual assignment.
 
+### 6. Genetic Algorithm
+* File - 2175052_Safir_ML_Lab_Ass6.pynb
+* Reference - https://github.com/ezstoltz/genetic-algorithm/blob/master/genetic_algorithm_TSP.ipynb
+#### Assignment 6
+Write an evolutionary (GA) algorithm that searches for the shortest route between N
+cities. Use an encoding method such that the chromosomes consist of lists of integers
+determining the indices of the cities. Examples of five-city paths starting in city 4 are e.g. (4,
+3, 1, 2, 5), (4, 1, 5, 2, 3), (4, 5, 1, 2, 3) etc. The first chromosome thus encodes the path 4 → 3
+→ 1 → 2 → 5 → 4. The fitness should be taken as the inverse of the route length (calculated
+using the ordinary cartesian distance measure and not the city-block distance measures). The
+program should always generate syntactically correct routes, i.e. routes in which each city is
+visited once and only once until, in the final step, the tour ends by a return to the starting city.
+Choose a suitable mutation operator for the TSP that maps valid chromosomes (i.e. paths)
+onto other valid chromosomes. Choose a suitable crossover operator for the TSP that maps
+valid chromosomes onto other valid chromosomes. Using these crossover and mutation
+operators, write an Evolutionary Algorithm that solves the Travelling Salesman Problem.
+Apply your program to the TSP data given in the file. This file contains a 50 × 2 matrix
+with the coordinates (x i , y i ) for city i = 1, . . . , 50. What is the shortest path between the
+cities and how long is it?
+File Link:- http://ml.informatik.uni-freiburg.de/former/_media/teaching/ss11/citydata.txt
