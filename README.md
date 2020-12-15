@@ -51,7 +51,7 @@ and Test. Report the average accuracy, F1-score and plot AUC (Area Under the Cur
 
 ### 4. SVC kernels
 * File - svc_kernels.py
-* For Structured Data - svc_kernels.pynb
+* For Structured Data - svc_kernels.ipynb
 #### Assignment 3
 Write a program to demonstrate the working of SVM classifier with various nonlinear kernels
 (Linear/Polynomial/RBF) for a non-linearly separable data. Before constructing SVM model
@@ -63,7 +63,7 @@ accuracy, F-score and ROC curve for the best model created using Linear, Polynom
 RBF kernels, respectively.
 
 ### 5. Bayesian Belief Network
-* File - 2175052_Safir_ML_Lab_Ass5.pynb
+* File - 2175052_Safir_ML_Lab_Ass5.ipynb
 #### Assignment 5
 Write a python program to construct a Bayesian Belief Network considering medical data.
 Use this model to demonstrate the diagnosis of heart patients using the standard Heart
@@ -73,7 +73,7 @@ Note:- Copy ‘asia’ dataset from the package ‘bnlearn’. Then, develop you
 construct a Bayesian Belief Network. It’s an individual assignment.
 
 ### 6. Genetic Algorithm
-* File - 2175052_Safir_ML_Lab_Ass6.pynb
+* File - 2175052_Safir_ML_Lab_Ass6.ipynb
 * Reference - https://github.com/ezstoltz/genetic-algorithm/blob/master/genetic_algorithm_TSP.ipynb
 #### Assignment 6
 Write an evolutionary (GA) algorithm that searches for the shortest route between N
@@ -92,3 +92,11 @@ Apply your program to the TSP data given in the file. This file contains a 50 ×
 with the coordinates (x i , y i ) for city i = 1, . . . , 50. What is the shortest path between the
 cities and how long is it?
 File Link:- http://ml.informatik.uni-freiburg.de/former/_media/teaching/ss11/citydata.txt
+
+
+### 7. Artificial Neural Networks
+* File - 2175052_ML_Ass7_Safir_Motiwala.ipynb
+#### Assignment 7
+Build a Multi-Layer Artificial Neural Network with backpropagation algorithm in Python
+using Tensorflow on any real-world non-linear dataset and test the model. Apply cross-
+validation approach for obtaining model accuracy.
