@@ -62,7 +62,17 @@ hyper-parameters (degree, C, and sigma) using k-fold cross-validation technique.
 accuracy, F-score and ROC curve for the best model created using Linear, Polynomial, and
 RBF kernels, respectively.
 
-### 5. Bayesian Belief Network
+### 5. EM and KMeans Clustering
+* File - 2175052_ML_LAB4_Safir_Motiwala.ipynb
+#### Assignment 4
+Use any clustering dataset from OpenML/Kaggle repository having atleast 10 input features.
+Now apply EM algorithm to cluster these data points. Use the same data set for clustering
+using k-Means algorithm. Vary the value of parameter ‘k’ in k-means algorithm in the range
+1-20 and select best ‘k’ using cross-validation technique. Report the result obtained with best
+value of ‘k’.
+Compare the results of these two algorithms and comment on the quality of clustering.
+
+### 6. Bayesian Belief Network
 * File - 2175052_Safir_ML_Lab_Ass5.ipynb
 #### Assignment 5
 Write a python program to construct a Bayesian Belief Network considering medical data.
@@ -72,7 +82,7 @@ R package ‘bnlearn’ (Link:- https://www.bnlearn.com/bnrepository/discrete-sm
 Note:- Copy ‘asia’ dataset from the package ‘bnlearn’. Then, develop your code in python to
 construct a Bayesian Belief Network. It’s an individual assignment.
 
-### 6. Genetic Algorithm
+### 7. Genetic Algorithm
 * File - 2175052_Safir_ML_Lab_Ass6.ipynb
 * Reference - https://github.com/ezstoltz/genetic-algorithm/blob/master/genetic_algorithm_TSP.ipynb
 #### Assignment 6
@@ -94,9 +104,16 @@ cities and how long is it?
 File Link:- http://ml.informatik.uni-freiburg.de/former/_media/teaching/ss11/citydata.txt
 
 
-### 7. Artificial Neural Networks
+### 8. Artificial Neural Networks
 * File - 2175052_ML_Ass7_Safir_Motiwala.ipynb
 #### Assignment 7
 Build a Multi-Layer Artificial Neural Network with backpropagation algorithm in Python
 using Tensorflow on any real-world non-linear dataset and test the model. Apply cross-
 validation approach for obtaining model accuracy.
+
+### 9. Convolutional Neural Networks
+* File - 2175052_ML_Lab8_Safir_Motiwala.ipynb
+#### Assignment 8
+Write a program to demonstrate the working of a deep neural network (CNN network) for a
+chosen application. Build the CNN model using Tensorflow for the given application and
+apply it to classify new samples. Validate the model using cross-validation technique.
